@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum Frequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  RARELY
+}
+
+enum SymptomName {
+  HEADACHE
+  NAUSEA
+  VOMITING
+  DIARRHEA
+  FATIGUE
+  DIZZINESS
+  INSOMNIA
+  CONSTIPATION
+  MUSCLE_PAIN
+  JOINT_PAIN
+  OTHER
+}
+
+model User {
+  id        String  @id @default(cuid()) @map("_id")
+  clerkId   String  @unique
+  email     String  @unique
+  firstName String
+  lastName  String
+  image     String?
+
+  age           Int?
+  height        Int?
+  weight        Int?
+  gender        String?
+  bloodType     String?
+  medicalIssues String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  symptoms       Symptom[]
+  medications    Medication[]
+  MentalWellness MentalWellness[]
+}
+
+// step 2
+model Symptom {
+  id        String      @id @default(cuid()) @map("_id")
+  userId    String
+  name      SymptomName // here i want if if the user selects other then the predefined symptoms then he can enter his own symptom
+  intensity Int // Intensity level from 1 to 10
+  frequency Frequency //how often the symptom occurs
+  loggedAt  DateTime    @default(now()) // When the symptom was logged
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// step 3
+model Medication {
+  id        String    @id @default(cuid()) @map("_id")
+  userId    String
+  name      String // Name of the medication
+  frequency String // Frequency of the medication
+  startDate DateTime? // When the medication was started
+  endDate   DateTime? // When the medication will end
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// step 4
+model MentalWellness {
+  id        String   @id @default(cuid()) @map("_id")
+  userId    String
+  mood      String
+  happiness String
+  anxiety   String?
+  loggedAt  DateTime @default(now()) // When the symptom was logged
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

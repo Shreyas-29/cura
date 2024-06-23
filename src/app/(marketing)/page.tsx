@@ -36,7 +36,7 @@ const HomePage = () => {
                     {FEATURES.map((feature) => (
                         <div className="flex flex-col items-start">
                             <feature.icon className="w-8 h-8 text-primary" />
-                            <h3 className="text-lg font-medium mt-4">
+                            <h3 className="text-lg font-medium font-heading mt-4">
                                 {feature.title}
                             </h3>
                             <p className="text-muted-foreground mt-1 text-sm md:text-base">
@@ -85,7 +85,7 @@ const HomePage = () => {
                                                 <CheckIcon
                                                     className={cn(
                                                         "w-5 h-5",
-                                                        plan.name === "Pro" ? "text-primary" : "text-primary"
+                                                        plan.name === "Pro" ? "text-primary" : "text-foreground"
                                                     )}
                                                 />
                                                 <TooltipProvider>
@@ -98,12 +98,13 @@ const HomePage = () => {
                                                                 {feature.text}
                                                             </p>
                                                         </TooltipTrigger>
-                                                        <TooltipContent>
-                                                            {feature.tooltip}
-                                                        </TooltipContent>
+                                                        {feature.tooltip && (
+                                                            <TooltipContent>
+                                                                {feature.tooltip}
+                                                            </TooltipContent>
+                                                        )}
                                                     </Tooltip>
                                                 </TooltipProvider>
-
                                             </li>
                                         ))}
                                     </ul>
