@@ -78,18 +78,6 @@ const OnboardingPage = () => {
             <div className="py-8 max-w-4xl mx-auto w-full bg-background flex flex-col h-full px-1">
                 <Component nextStep={() => setActiveStep((prev) => prev + 1)} />
             </div>
-
-            {/* next */}
-            {/* <div className="flex items-center justify-end w-full max-w-4xl mx-auto mt-4">
-                <Button
-                    variant="default"
-                    disabled={activeStep === STEPS.length}
-                    onClick={() => setActiveStep((prev) => prev + 1)}
-                    className="px-4 py-2 text-sm text-white bg-primary rounded-md"
-                >
-                    Next
-                </Button>
-            </div> */}
         </div>
     );
 };

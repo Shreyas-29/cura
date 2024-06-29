@@ -12,7 +12,7 @@ import StepThree from "./step-three";
 import StepFour from "./step-four";
 import StepFive from "./step-five";
 
-const stepComponents: { [key: string]: React.ComponentType } = {
+const stepComponents: { [key: string]: any } = {
     "step-one": StepOne,
     "step-two": StepTwo,
     "step-three": StepThree,
