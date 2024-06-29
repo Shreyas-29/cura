@@ -5,6 +5,8 @@ import AnimationContainer from "./global/animation-container";
 
 import Navbar from "./navigation/navbar";
 import Footer from "./navigation/footer";
+import DashboardNavbar from "./navigation/dashboard-navbar";
+import UserAccountNavbar from "./navigation/user-account-navbar";
 
 import Header from "./onboarding/header";
 import Steps from "./onboarding/steps";
@@ -13,6 +15,18 @@ import StepTwo from "./onboarding/step-two";
 import StepThree from "./onboarding/step-three";
 import StepFour from "./onboarding/step-four";
 import StepFive from "./onboarding/step-five";
+
+import HealthPlanModal from "./modals/health-plan-modal";
+import SymptomModal from "./modals/symptom-modal";
+import MedicationModal from "./modals/medication-modal";
+import UserDetailsModal from "./modals/user-details-modal";
+
+import Loader from "./loader";
+import ChatBox from "./chat-box";
+import UserAccount from "./user-account";
+import HealthTips from "./health-tips";
+import AddSymptomCard from "./add-symptom-card";
+import HealthRecommendations from "./health-recommendations";
 
 export {
     Icons,
@@ -28,4 +42,16 @@ export {
     StepThree,
     StepFour,
     StepFive,
+    DashboardNavbar,
+    UserAccount,
+    Loader,
+    ChatBox,
+    HealthPlanModal,
+    HealthTips,
+    AddSymptomCard,
+    HealthRecommendations,
+    UserAccountNavbar,
+    SymptomModal,
+    MedicationModal,
+    UserDetailsModal,
 };

@@ -14,6 +14,11 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum Role {
+  user
+  model
+}
+
 enum Frequency {
   DAILY
   WEEKLY
@@ -35,6 +40,37 @@ enum SymptomName {
   OTHER
 }
 
+enum Adherence {
+  ALWAYS
+  OFTEN
+  SOMETIMES
+  NEVER
+  RARELY
+}
+
+enum Mood {
+  HAPPY
+  SAD
+  ANGRY
+  ANXIOUS
+  STRESSED
+  NEUTRAL
+}
+
+enum Sleep {
+  GOOD
+  BAD
+  AVERAGE
+}
+
+enum Stress {
+  NOT_STRESSED
+  SLIGHTLY
+  MODERATELY
+  HIGHLY
+  EXTREMELY
+}
+
 model User {
   id        String  @id @default(cuid()) @map("_id")
   clerkId   String  @unique
@@ -47,7 +83,7 @@ model User {
   height        Int?
   weight        Int?
   gender        String?
-  bloodType     String?
+  bloodGroup    String?
   medicalIssues String?
 
   createdAt DateTime @default(now())
@@ -55,7 +91,8 @@ model User {
 
   symptoms       Symptom[]
   medications    Medication[]
-  MentalWellness MentalWellness[]
+  mentalwellness MentalWellness[]
+  messages       Message[]
 }
 
 // step 2
@@ -65,7 +102,7 @@ model Symptom {
   name      SymptomName // here i want if if the user selects other then the predefined symptoms then he can enter his own symptom
   intensity Int // Intensity level from 1 to 10
   frequency Frequency //how often the symptom occurs
-  loggedAt  DateTime    @default(now()) // When the symptom was logged
+  loggedAt  DateTime?   @default(now()) // When the symptom was logged
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -75,21 +112,35 @@ model Medication {
   id        String    @id @default(cuid()) @map("_id")
   userId    String
   name      String // Name of the medication
-  frequency String // Frequency of the medication
+  dosage    String // Dosage of the medication
+  purpose   String? // Purpose of the medication
+  frequency Frequency // Frequency of the medication
+  adherence Adherence // Whether the user is adhering to the medication
   startDate DateTime? // When the medication was started
-  endDate   DateTime? // When the medication will end
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 // step 4
 model MentalWellness {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String  @id @default(cuid()) @map("_id")
   userId    String
-  mood      String
-  happiness String
+  mood      Mood
+  happiness Int
+  sleep     Sleep
+  stress    Stress
   anxiety   String?
-  loggedAt  DateTime @default(now()) // When the symptom was logged
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// chat
+model Message {
+  id        String   @id @default(cuid()) @map("_id")
+  role      Role
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

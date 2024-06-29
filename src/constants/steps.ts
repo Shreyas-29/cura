@@ -1,7 +1,7 @@
 export const STEPS = [
     {
         id: 1,
-        title: "General Information",
+        title: "General Details",
         info: "Tell us more about your health",
         name: "step-one",
     },
@@ -13,7 +13,7 @@ export const STEPS = [
     },
     {
         id: 3,
-        title: "Medication Management",
+        title: "Medications",
         info: "Keep track of your medications",
         name: "step-three",
     },

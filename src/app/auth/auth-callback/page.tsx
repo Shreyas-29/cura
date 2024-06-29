@@ -1,15 +1,10 @@
 "use client";
 
 import { getAuthStatus } from "@/actions";
-import { useAuth, useUser } from '@clerk/nextjs';
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 const AuthCallbackPage = () => {
-
-    const { isLoaded, user } = useUser();
-
-    const { isSignedIn } = useAuth();
 
     const router = useRouter();
 
@@ -21,7 +16,7 @@ const AuthCallbackPage = () => {
     });
 
     if (data?.success) {
-        router.push("/onboarding/step-one");
+        router.push("/onboarding");
     }
 
     return (

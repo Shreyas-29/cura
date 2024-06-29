@@ -1,6 +1,6 @@
 "use server";
 
-import { db } from "@/lib/db";
+import { db } from "@/lib";
 import { currentUser } from "@clerk/nextjs/server";
 
 const getAuthStatus = async () => {
@@ -16,7 +16,7 @@ const getAuthStatus = async () => {
         }
     });
 
-    console.log("existingUser", existingUser);
+    // console.log("existingUser", existingUser);
 
     if (!existingUser) {
         await db.user.create({
@@ -30,7 +30,7 @@ const getAuthStatus = async () => {
             },
         });
 
-        console.log("User created");
+        // console.log("User created");
     }
 
     return { success: true };

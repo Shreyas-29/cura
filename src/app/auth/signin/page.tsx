@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { ArrowLeftIcon, EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
 import { useSignIn } from "@clerk/nextjs";
 import { Icons } from "@/components";
+import { OAuthStrategy } from "@clerk/types";
 
 const SignInPage = () => {
 
@@ -30,7 +31,7 @@ const SignInPage = () => {
 
         if (!isLoaded) return;
 
-        if ( !email || !password) {
+        if (!email || !password) {
             toast.error("Please fill in all fields");
             return;
         }
@@ -51,13 +52,13 @@ const SignInPage = () => {
         } catch (error: any) {
             console.error(JSON.stringify(error, null, 2));
             switch (error.errors[0]?.code) {
-                case 'form_identifier_not_found':
+                case "form_identifier_not_found":
                     toast.error("This email is not registered. Please sign up first.");
                     break;
-                case 'form_password_incorrect':
+                case "form_password_incorrect":
                     toast.error("Incorrect password. Please try again.");
                     break;
-                case 'too_many_attempts':
+                case "too_many_attempts":
                     toast.error("Too many attempts. Please try again later.");
                     break;
                 default:
@@ -67,6 +68,16 @@ const SignInPage = () => {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleSignIn = async (strategy: OAuthStrategy) => {
+        if (!signIn) return;
+
+        return signIn?.authenticateWithRedirect({
+            strategy,
+            redirectUrl: "/auth/signup/sso-callback",
+            redirectUrlComplete: "/onboarding",
+        });
     };
 
     return (
@@ -137,6 +148,23 @@ const SignInPage = () => {
                     </Button>
                 </div>
             </form>
+
+            <div className="w-full flex items-center max-w-xs mx-auto">
+                <div className="flex-1 border-t border-border"></div>
+                <p className="text-sm text-muted-foreground mx-2">OR</p>
+                <div className="flex-1 border-t border-border"></div>
+            </div>
+
+            <div className="w-full max-w-xs mx-auto">
+                <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => handleSignIn("oauth_google")}
+                >
+                    <Icons.google className="w-4 h-4 mr-2" />
+                    Sign In with Google
+                </Button>
+            </div>
 
             <div className="flex mt-2">
                 <p className="text-sm text-muted-foreground text-center w-full">

@@ -1,13 +1,20 @@
-import React from 'react'
+// "use client";
+
+import React from "react"
 import MaxWidthWrapper from "../global/max-width-wrapper";
 import Link from "next/link";
 import Icons from "../global/icons";
-import { buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
+import { currentUser, User } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+// import { useClerk } from "@clerk/nextjs";
+import UserAccount from "../user-account";
 
-const Navbar = () => {
+interface Props {
+    user: User | null;
+}
 
-    const user = false;
-
+const Navbar = ({ user }: Props) => {
     return (
         <header className="sticky top-0 inset-x-0 w-full h-14 border-b border-border bg-background/20 backdrop-blur-md z-50">
             <MaxWidthWrapper>
@@ -21,9 +28,12 @@ const Navbar = () => {
 
                     <div className="flex items-center gap-4">
                         {user ? (
-                            <Link href="/dashboard" className={buttonVariants({ size: "sm" })}>
-                                Dashboard
-                            </Link>
+                            <>
+                                <Link href="/dashboard" className={buttonVariants({ size: "sm" })}>
+                                    Dashboard
+                                </Link>
+                                <UserAccount />
+                            </>
                         ) : (
                             <>
                                 <Link href="/auth/signin" className={buttonVariants({ size: "sm", variant: "ghost" })}>

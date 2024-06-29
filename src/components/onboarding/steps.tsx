@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 import Icons from "../global/icons";
 import { STEPS } from "@/constants";
 import { usePathname } from "next/navigation";
@@ -27,7 +27,7 @@ const Steps = () => {
     const [activeTab, setActiveTab] = useState<string>(initialTab);
 
     useEffect(() => {
-            localStorage.setItem("cura_active_tab", activeTab);
+        localStorage.setItem("cura_active_tab", activeTab);
     }, [activeTab]);
 
     useEffect(() => {

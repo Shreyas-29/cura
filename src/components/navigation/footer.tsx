@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import MaxWidthWrapper from "../global/max-width-wrapper";
 import AnimationContainer from "../global/animation-container";
 import Icons from "../global/icons";

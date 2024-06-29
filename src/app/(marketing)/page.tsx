@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { cn } from "@/lib";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import Link from "next/link";
-import React from 'react'
+import React from "react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import Image from "next/image";
 
 const HomePage = () => {
 
@@ -15,7 +16,7 @@ const HomePage = () => {
     return (
         <>
             {/* hero */}
-            <MaxWidthWrapper>
+            <MaxWidthWrapper className="flex flex-col items-center w-full">
                 <div className="flex flex-col items-center justify-center w-full py-20 text-center">
                     <h1 className="text-foreground py-6 text-5xl font-semibold md:font-semibold leading-none tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl w-full font-heading">
                         Your personal health assistant
@@ -28,13 +29,29 @@ const HomePage = () => {
                         <ArrowRightIcon className="w-4 h-4 ml-1.5" />
                     </Link>
                 </div>
+                <div className="relative py-20 bg-transparent w-full mx-auto">
+                    <AnimationContainer delay={baseDelay + 0.3} className="flex items-center justify-center">
+                        <div className="absolute md:top-[20%] left-1/2 gradient w-3/4 -translate-x-1/2 h-1/4 md:h-1/3 inset-0 blur-[10rem] animate-image-glow"></div>
+                        <div className="-m-2 rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl mx-auto flex items-center justify-center w-max">
+                            <Image
+                                src="/images/dashboard.svg"
+                                alt="Dashboard"
+                                width={1000}
+                                height={1200}
+                                quality={100}
+                                priority
+                                className="rounded-md lg:rounded-xl mx-auto bg-foreground/10 ring-1 ring-border"
+                            />
+                        </div>
+                    </AnimationContainer>
+                </div>
             </MaxWidthWrapper>
 
             {/* features */}
             <MaxWidthWrapper className="py-10">
                 <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-8 md:gap-x-8 w-full">
                     {FEATURES.map((feature) => (
-                        <div className="flex flex-col items-start">
+                        <div key={feature.title} className="flex flex-col items-start">
                             <feature.icon className="w-8 h-8 text-primary" />
                             <h3 className="text-lg font-medium font-heading mt-4">
                                 {feature.title}
