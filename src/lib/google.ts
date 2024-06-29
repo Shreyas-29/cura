@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ai = new GoogleGenerativeAI("AIzaSyApQm9k6z8Ke1NS23oAXURWZFxgIJDwOXE");
+const ai = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
 
 export default ai;
