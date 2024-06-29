@@ -16,8 +16,6 @@ const getAuthStatus = async () => {
         }
     });
 
-    // console.log("existingUser", existingUser);
-
     if (!existingUser) {
         await db.user.create({
             data: {
@@ -29,8 +27,6 @@ const getAuthStatus = async () => {
                 clerkId: user.id,
             },
         });
-
-        // console.log("User created");
     }
 
     return { success: true };

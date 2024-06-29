@@ -81,8 +81,6 @@ const UserDetailsModal = () => {
                 return;
             }
 
-            // console.log("age", form.getValues("age"));
-
             await updateUser({
                 age: form.getValues("age"),
                 bloodGroup: form.getValues("bloodGroup"),

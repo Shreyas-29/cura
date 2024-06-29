@@ -12,10 +12,10 @@ const DashboardLayout = async ({ children }: Props) => {
 
     const user = await currentUser();
 
-    // if (!user) {
-    //     redirect("/auth/signin");
-    // }
-    // console.log(user, "User");
+    if (!user) {
+        redirect("/auth/signin");
+    }
+    console.log(user, "User");
 
     const dbUser = await db.user.findUnique({
         where: {
@@ -28,14 +28,12 @@ const DashboardLayout = async ({ children }: Props) => {
         },
     });
 
-    // console.log(dbUser, "dbUser");
-
     // if (dbUser?.symptoms.length! < 0 || dbUser?.medications.length! < 0 || dbUser?.mentalwellness.length! < 0) {
     //     redirect("/onboarding");
     // }
-    // if (!dbUser) {
-    //     redirect("/onboarding?step=1");
-    // }
+    if (!dbUser) {
+        redirect("/onboarding?step=1");
+    }
 
     return (
         <>

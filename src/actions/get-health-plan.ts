@@ -1,9 +1,7 @@
 "use server";
 
-import { db, openai } from "@/lib";
 import ai from "@/lib/google";
 import { generatePrompt } from "@/utils";
-import { currentUser } from "@clerk/nextjs/server";
 import { Medication, Symptom, User } from "@prisma/client";
 
 interface Props {

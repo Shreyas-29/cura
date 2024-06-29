@@ -22,8 +22,6 @@ const getMessags = async () => {
             }
         });
 
-        // console.log("messages from server", messages);
-
         return messages;
     } catch (error) {
         console.log("Error creating message: ", error);

@@ -51,16 +51,6 @@ const SymptomModal = () => {
 
     const { mutate, isPending } = useMutation({
         mutationKey: ["symptom"],
-        // mutationFn: async ({ name, intensity, frequency }: StepTwoSchemaType) => {
-        //     const payload: StepTwoSchemaType = {
-        //         name,
-        //         intensity,
-        //         frequency,
-        //     };
-
-        //     const { data } = await axios.post("/api/symptom", payload);
-        //     return data;
-        // },
         mutationFn: async () => {
             if (!user) {
                 toast.error("You must be logged in to perform this action");
@@ -86,7 +76,7 @@ const SymptomModal = () => {
     const onSubmit = () => {
         mutate();
     };
-    console.log("isSymptomModalOpen", isSymptomModalOpen);
+
     if (isDesktop) {
         return (
             <Dialog open={isSymptomModalOpen} onOpenChange={closeSymptomModal}>
