@@ -1,4 +1,4 @@
-import { AnimationContainer, MaxWidthWrapper } from "@/components";
+import { AnimationContainer, Icons, MaxWidthWrapper } from "@/components";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { FEATURES, PLANS } from "@/constants";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,18 +16,28 @@ const HomePage = () => {
     return (
         <>
             {/* hero */}
-            <MaxWidthWrapper className="flex flex-col items-center w-full">
+            <MaxWidthWrapper className="flex flex-col items-center w-full relative">
                 <div className="flex flex-col items-center justify-center w-full py-20 text-center">
+                    <div className="flex items-center justify-center lg:gap-16 w-full absolute top-[15%] left-1/2 -translate-x-1/2 -z-10">
+                        <div className="w-52 h-52 rounded-full bg-orange-500 blur-[10rem] opacity-70 -z-10"></div>
+                        <div className="hidden lg:w-52 h-52 rounded-full bg-amber-500 blur-[10rem] opacity-70 -z-10"></div>
+                    </div>
                     <h1 className="text-foreground py-6 text-5xl font-semibold md:font-semibold leading-none tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl w-full font-heading">
                         Your personal health assistant
                     </h1>
                     <p className="text-muted-foreground text-base md:text-lg max-w-xl py-2">
                         Instantly get the right medications for your symptoms with AI-powered recommendations
                     </p>
-                    <Link href="/" className={buttonVariants({ className: "mt-8" })}>
-                        Get cured
-                        <ArrowRightIcon className="w-4 h-4 ml-1.5" />
-                    </Link>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
+                        <Link href="/dashboard" className={buttonVariants({ className: "mt-8" })}>
+                            Get cured
+                            <ArrowRightIcon className="w-4 h-4 ml-1.5" />
+                        </Link>
+                        <Link href="#" className={buttonVariants({ variant: "black", className: "mt-8" })}>
+                            <Icons.store className="w-4 h-4 text-white mr-1.5" />
+                            Get the app
+                        </Link>
+                    </div>
                 </div>
                 <div className="relative py-20 bg-transparent w-full mx-auto">
                     <AnimationContainer delay={baseDelay + 0.3} className="flex items-center justify-center">
