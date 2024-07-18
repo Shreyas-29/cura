@@ -206,7 +206,7 @@ const SymptomModal = () => {
 
     return (
         <Drawer open={isSymptomModalOpen} onOpenChange={closeSymptomModal}>
-            <DrawerContent className="h-full">
+            <DrawerContent className="h-max overflow-y-scroll scrollbar-hide">
                 <DrawerHeader className="text-left">
                     <DrawerTitle>
                         Add a new symptom

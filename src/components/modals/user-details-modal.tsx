@@ -257,7 +257,7 @@ const UserDetailsModal = () => {
 
     return (
         <Drawer open={isPersonalDetailsModalOpen} onOpenChange={closePersonalDetailsModal}>
-            <DrawerContent className="h-full">
+            <DrawerContent className="h-max overflow-y-scroll scrollbar-hide">
                 <DrawerHeader className="text-left">
                     <DrawerTitle>
                         Add a new symptom

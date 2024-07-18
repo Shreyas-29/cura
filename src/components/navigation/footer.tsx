@@ -43,7 +43,7 @@ const Footer = () => {
                                 <h3 className="font-semibold mb-2">
                                     Company
                                 </h3>
-                                <ul className="text-muted-foreground space-y-2">
+                                <ul className="text-muted-foreground text-sm space-y-2">
                                     <li>
                                         <Link href="#">
                                             About
@@ -70,7 +70,7 @@ const Footer = () => {
                                 <h3 className="font-semibold mb-2">
                                     Legal
                                 </h3>
-                                <ul className="text-muted-foreground space-y-2">
+                                <ul className="text-muted-foreground text-sm space-y-2">
                                     <li>
                                         <Link href="#">
                                             Help
@@ -96,8 +96,8 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="border-t border-neutral-200 mt-10 pt-6 flex items-center justify-between w-full">
-                        <p className="text-start text-muted-foreground">
-                            All rights reserved @{new Date().getFullYear()} Polymath Pods
+                        <p className="text-start text-muted-foreground text-sm">
+                            All rights reserved @{new Date().getFullYear()} Cura
                         </p>
                         <Button size="sm" variant="outline">
                             Feedback

@@ -16,10 +16,6 @@ const stepComponents: { [key: string]: any } = {
     "step-five": StepFive,
 };
 
-interface Props {
-    searchParams: any;
-}
-
 const OnboardingPage = () => {
 
     const router = useRouter();

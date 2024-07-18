@@ -11,13 +11,10 @@ import { toast } from "sonner";
 import { ArrowLeftIcon, EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 import { Icons } from "@/components";
-import { OAuthStrategy } from "@clerk/types";
 
 const SignUpPage = () => {
 
     const router = useRouter();
-
-    const { signIn } = useSignIn();
 
     const { isLoaded, signUp, setActive } = useSignUp();
 
@@ -110,16 +107,6 @@ const SignUpPage = () => {
         } finally {
             setIsVerifying(false);
         }
-    };
-
-    const handleSignIn = async (strategy: OAuthStrategy) => {
-        if (!signIn) return;
-
-        return signIn?.authenticateWithRedirect({
-            strategy,
-            redirectUrl: "/auth/signup/sso-callback",
-            redirectUrlComplete: "/onboarding",
-        });
     };
 
     return isVerified ? (
@@ -261,23 +248,6 @@ const SignUpPage = () => {
                     </Button>
                 </div>
             </form>
-
-            <div className="w-full flex items-center max-w-xs mx-auto">
-                <div className="flex-1 border-t border-border"></div>
-                <p className="text-sm text-muted-foreground mx-2">OR</p>
-                <div className="flex-1 border-t border-border"></div>
-            </div>
-
-            <div className="w-full max-w-xs mx-auto">
-                <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => handleSignIn("oauth_google")}
-                >
-                    <Icons.google className="w-4 h-4 mr-2" />
-                    Sign In with Google
-                </Button>
-            </div>
 
             <div className="flex mt-2">
                 <p className="text-sm text-muted-foreground text-center w-full">

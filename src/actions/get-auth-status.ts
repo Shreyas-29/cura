@@ -12,7 +12,7 @@ const getAuthStatus = async () => {
 
     const existingUser = await db.user.findFirst({
         where: {
-            id: user.id,
+            clerkId: user.id,
         }
     });
 
@@ -20,13 +20,15 @@ const getAuthStatus = async () => {
         await db.user.create({
             data: {
                 id: user.id,
+                clerkId: user.id,
                 email: user.primaryEmailAddress.emailAddress,
                 firstName: user.firstName!,
                 lastName: user.lastName || "",
                 image: user.imageUrl,
-                clerkId: user.id,
             },
         });
+
+        return { success: false };
     }
 
     return { success: true };

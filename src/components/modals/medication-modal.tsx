@@ -238,7 +238,7 @@ const MedicationModal = () => {
 
     return (
         <Drawer open={isMedicationModalOpen} onOpenChange={closeMedicationModal}>
-            <DrawerContent className="max-h-full">
+            <DrawerContent className="h-max overflow-y-scroll scrollbar-hide">
                 <DrawerHeader className="text-left">
                     <DrawerTitle>
                         Add a new symptom

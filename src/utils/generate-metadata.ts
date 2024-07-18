@@ -7,18 +7,13 @@ export const generateMetadata = ({
     icons = [
         {
             rel: "icon",
-            sizes: "180x180",
-            url: "/icons/favicon-180x180.png",
+            sizes: "512x512",
+            url: "/icons/logo.png",
         },
         {
-            rel: "icon",
-            sizes: "32x32",
-            url: "/icons/favicon-32x32.png",
-        },
-        {
-            rel: "icon",
-            sizes: "16x16",
-            url: "/icons/favicon-16x16.png",
+            rel: "manifest",
+            sizes: "512x512",
+            url: "/icons/logo.svg",
         },
     ],
 }: {

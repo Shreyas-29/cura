@@ -8,6 +8,10 @@ import Footer from "./navigation/footer";
 import DashboardNavbar from "./navigation/dashboard-navbar";
 import UserAccountNavbar from "./navigation/user-account-navbar";
 
+import Sidebar from "./dashboard/sidebar";
+import Banner from "./dashboard/banner";
+import Recommendations from "./dashboard/recommendations";
+
 import Header from "./onboarding/header";
 import Steps from "./onboarding/steps";
 import StepOne from "./onboarding/step-one";
@@ -54,4 +58,7 @@ export {
     SymptomModal,
     MedicationModal,
     UserDetailsModal,
+    Sidebar,
+    Banner,
+    Recommendations,
 };

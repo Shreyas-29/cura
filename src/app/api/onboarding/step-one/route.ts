@@ -19,20 +19,40 @@ export async function POST(request: Request) {
         return new NextResponse("Invalid data passed", { status: 422 });
     }
 
-    try {
-        // check here if the user already has these details if yes then update them else create new
-        await db.user.update({
-            where: {
-                id: user.id,
-            },
+    const dbUser = await db.user.findFirst({
+        where: {
+            clerkId: user.id,
+        },
+    });
+
+    if (!dbUser) {
+        await db.user.create({
             data: {
-                age,
-                bloodGroup,
-                gender,
-                height,
-                weight,
-            },
-        });
+                id: user.id,
+                clerkId: user.id,
+                email: user.primaryEmailAddress?.emailAddress!,
+                firstName: user.firstName!,
+                lastName: user.lastName || "",
+                image: user.imageUrl,
+            }
+        })
+    }
+
+    try {
+        if (dbUser) {
+            await db.user.update({
+                where: {
+                    clerkId: user.id,
+                },
+                data: {
+                    age,
+                    bloodGroup,
+                    gender,
+                    height,
+                    weight,
+                },
+            });
+        }
 
         return NextResponse.json("User updated!", { status: 200 });
     } catch (error) {

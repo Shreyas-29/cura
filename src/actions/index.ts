@@ -8,6 +8,7 @@ import getAuthStatus from "./get-auth-status";
 import getHealthPlan from "./get-health-plan";
 import getHealthTips from "./get-health-tips";
 import getMessags from "./get-messages";
+import getRecommndations from "./get-recommendations";
 
 export {
     updateUser,
@@ -18,4 +19,5 @@ export {
     createMedication,
     getHealthTips,
     getMessags,
+    getRecommndations,
 }

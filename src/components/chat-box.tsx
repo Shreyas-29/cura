@@ -149,7 +149,7 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
     }, [messages]);
 
     return (
-        <div className="flex flex-col h-full w-full max-w-4xl mx-auto relative">
+        <div className="flex flex-col h-full w-full relative">
             <div className="h-[calc(100vh-180px)] w-full md:border rounded-xl flex flex-col">
                 <div className="w-full h-full overflow-y-scroll space-y-4 md:p-4 flex flex-col flex-1 scrollbar-hide">
                     <div className="absolute top-px inset-x-0 md:inset-x-2 w-full md:w-[98%] mx-auto h-10 bg-gradient-to-b from-background rounded-t-none md:rounded-t-xl"></div>
@@ -199,7 +199,7 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     )}
                     <div ref={messagesEndRef} />
                 </div>
-                <div className="max-w-4xl mx-auto w-full sticky bottom-0 inset-x-0 z-50 rounded-xl">
+                <div className="w-full rounded-xl">
                     <form onSubmit={handleSendMessage} className="flex gap-4 rounded-xl py-3 md:px-3">
                         <Input
                             type="text"

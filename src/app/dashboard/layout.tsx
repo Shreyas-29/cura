@@ -1,5 +1,5 @@
 import React from "react";
-import { DashboardNavbar } from "@/components";
+import { Banner, DashboardNavbar, Sidebar } from "@/components";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib";
@@ -36,12 +36,16 @@ const DashboardLayout = async ({ children }: Props) => {
     }
 
     return (
-        <>
-            <main className="mx-auto w-full relative">
-                <DashboardNavbar />
-                {children}
-            </main>
-        </>
+        <main className="mx-auto w-full relative">
+            <DashboardNavbar />
+            <Sidebar />
+            <div className="pl-16 flex flex-col w-full">
+                <div className="flexe flex-col items-start w-full p-4">
+                    <Banner />
+                    {children}
+                </div>
+            </div>
+        </main>
     );
 };
 

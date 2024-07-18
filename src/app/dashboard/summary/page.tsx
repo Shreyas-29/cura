@@ -37,7 +37,7 @@ const SummaryPage = async () => {
     const { age, bloodGroup, height, weight, gender, medicalIssues, image, firstName } = dbUser;
 
     return (
-        <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
+        <div className="flex flex-col items-start w-full">
             <div className="w-full py-8 px-4">
                 <h1 className="text-2xl font-semibold">
                     Health Summary

@@ -19,14 +19,16 @@ import {
     DrawerHeader,
     DrawerTitle
 } from "@/components/ui/drawer";
+import { LoaderIcon } from "lucide-react";
 
 interface Props {
     isOpen: boolean;
+    isLoading: boolean;
     setIsOpen: (isOpen: boolean) => void;
     result: string | null;
 }
 
-const HealthPlanModal = ({ isOpen, setIsOpen, result }: Props) => {
+const HealthPlanModal = ({ isOpen, isLoading, setIsOpen, result }: Props) => {
 
     const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -40,9 +42,15 @@ const HealthPlanModal = ({ isOpen, setIsOpen, result }: Props) => {
                         </DialogTitle>
                     </DialogHeader>
                     <div className="pt-6">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]} className="whitespace-pre-line">
-                            {result}
-                        </ReactMarkdown>
+                        {isLoading ? (
+                            <div className="flex items-center justify-center min-h-40 w-full">
+                                <LoaderIcon className="w-5 h-5 animate-spin to-muted-foreground" />
+                            </div>
+                        ) : (
+                            <ReactMarkdown remarkPlugins={[remarkGfm]} className="whitespace-pre-line">
+                                {result}
+                            </ReactMarkdown>
+                        )}
                     </div>
                     <DialogFooter>
                         <DialogClose>
@@ -58,7 +66,7 @@ const HealthPlanModal = ({ isOpen, setIsOpen, result }: Props) => {
 
     return (
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
-            <DrawerContent>
+            <DrawerContent className="h-max overflow-y-scroll scrollbar-hide">
                 <DrawerHeader className="text-left">
                     <DrawerTitle>
                         Health plan

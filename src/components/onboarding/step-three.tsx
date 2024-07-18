@@ -201,7 +201,7 @@ const StepThree = ({ nextStep }: Props) => {
                     />
                     <div className="flex items-center justify-end w-full mt-10 gap-6">
                         <p className="text-xs text-muted-foreground">
-                            You can update the previous steps later in settings
+                            You can update these settings in dashboard
                         </p>
                         <Button
                             type="submit"

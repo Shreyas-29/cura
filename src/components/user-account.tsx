@@ -15,7 +15,7 @@ const UserAccount = () => {
 
     const handleSignOut = () => {
         signOut();
-        router.push("/signin");
+        router.push("/auth/signin");
     };
 
     if (!user) {
@@ -50,7 +50,7 @@ const UserAccount = () => {
                     />
                 </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="rounded-xl w-full max-w-40 shadow-lg shadow-neutral-500/10">
+            <DropdownMenuContent align="end" className="rounded-xl min-w-56 w-full shadow-lg shadow-neutral-500/10">
                 <div className="flex flex-col items-start text-start px-4 py-3">
                     <h5 title={firstName!} className="text-sm font-medium font-heading capitalize">
                         {firstName}
@@ -61,7 +61,7 @@ const UserAccount = () => {
                 </div>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="p-0">
-                    <Link href="/dashboard/account" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent">
+                    <Link href="/dashboard/account" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent rounded-md">
                         <>
                             <UserIcon className="w-4 h-4" />
                             Account
@@ -69,7 +69,7 @@ const UserAccount = () => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="p-0">
-                    <Link href="#" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent">
+                    <Link href="#" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent rounded-md">
                         <>
                             <HelpCircleIcon className="w-4 h-4" />
                             Help
@@ -77,14 +77,14 @@ const UserAccount = () => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="p-0">
-                    <Link href="/dashboard/account/settings" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent">
+                    <Link href="/dashboard/account/settings" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent rounded-md">
                         <>
                             <SettingsIcon className="w-4 h-4" />
                             Settings
                         </>
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleSignOut} className="text-destructive hover:!bg-destructive/10 hover:!text-destructive flex items-center gap-2 px-4 py-2">
+                <DropdownMenuItem onClick={handleSignOut} className="text-destructive hover:!bg-destructive/10 hover:!text-destructive flex items-center gap-2 px-4 py-2 rounded-md">
                     <LogOutIcon className="w-4 h-4" />
                     Logout
                 </DropdownMenuItem>

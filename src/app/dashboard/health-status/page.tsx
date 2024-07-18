@@ -25,7 +25,7 @@ const HealthStatusPage = async () => {
     });
 
     return (
-        <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
+        <div className="flex flex-col items-start w-full">
             <div className="w-full py-8 px-4">
                 <h1 className="text-2xl font-semibold font-heading">
                     Health Status
@@ -42,7 +42,7 @@ const HealthStatusPage = async () => {
                                 <Card key={symptom.id}>
                                     <CardHeader>
                                         <CardTitle className="capitalize text-xl">
-                                            {symptom.name.toLowerCase()}
+                                            {symptom.name.toLowerCase().replace("_", " ")}
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>

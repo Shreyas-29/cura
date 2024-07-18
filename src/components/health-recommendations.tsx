@@ -91,7 +91,7 @@ const HealthRecommendations = ({ symptoms, medications, user }: Props) => {
                     </Button>
                 </CardContent>
 
-                <HealthPlanModal isOpen={isOpen} setIsOpen={setIsOpen} result={results} />
+                <HealthPlanModal isOpen={isOpen} setIsOpen={setIsOpen} result={results} isLoading={isLoading} />
             </Card>
         </div>
     )

@@ -16,7 +16,7 @@ interface Props {
 
 const Navbar = ({ user }: Props) => {
     return (
-        <header className="sticky top-0 inset-x-0 w-full h-14 border-b border-border bg-background/20 backdrop-blur-md z-50">
+        <header className="sticky top-0 inset-x-0 w-full h-14 border-b border-border bg-background/50 backdrop-blur-md z-50">
             <MaxWidthWrapper>
                 <div className="flex items-center justify-between w-full h-full">
                     <div className="flex">
