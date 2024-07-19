@@ -30,14 +30,14 @@ const SignUpPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        setIsLoading(true);
-
         if (!isLoaded) return;
 
         if (!name || !email || !password) {
             toast.error("Please fill in all fields");
             return;
         }
+
+        setIsLoading(true);
 
         try {
             await signUp.create({
@@ -80,14 +80,14 @@ const SignUpPage = () => {
     const handleVerify = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        setIsVerifying(true);
-
         if (!isLoaded) return;
 
         if (!code) {
             toast.error("Please enter the verification code");
             return;
         }
+
+        setIsVerifying(true);
 
         try {
             const completeSignUp = await signUp.attemptEmailAddressVerification({
@@ -118,7 +118,8 @@ const SignUpPage = () => {
             </Link>
 
             <div className="flex flex-col text-center gap-1">
-                <h1 className="text-2xl font-bold font-heading pt-2">
+                <Icons.logo className="w-12 h-12 mx-auto" />
+                <h1 className="text-2xl font-bold font-heading mt-2">
                     Please check your email
                 </h1>
                 <p className="text-muted-foreground">
@@ -172,7 +173,8 @@ const SignUpPage = () => {
             </Link>
 
             <div className="flex flex-col text-center gap-1">
-                <h1 className="text-2xl font-bold font-heading pt-2">
+                <Icons.logo className="w-12 h-12 mx-auto" />
+                <h1 className="text-2xl font-bold font-heading mt-2">
                     Sign Up
                 </h1>
                 <p className="text-muted-foreground">
@@ -225,7 +227,7 @@ const SignUpPage = () => {
                             size="icon"
                             variant="ghost"
                             disabled={isLoading}
-                            className="absolute top-1 right-1"
+                            className="absolute top-1 right-1 hover:translate-y-0"
                             onClick={() => setShowPassword(!showPassword)}
                         >
                             {showPassword ?
@@ -237,8 +239,8 @@ const SignUpPage = () => {
                 </div>
                 <div className="mt-6">
                     <Button
-                        size="default"
                         type="submit"
+                        size="default"
                         disabled={isLoading}
                         className="w-full"
                     >

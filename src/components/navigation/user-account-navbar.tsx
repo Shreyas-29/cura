@@ -39,6 +39,15 @@ const UserAccountNavbar = () => {
                 Medications
             </Link>
             <Link
+                href="/dashboard/account/billing"
+                className={cn(
+                    "text-sm font-medium px-6 py-2 relative border-b-2 border-transparent",
+                    pathname === "/dashboard/account/billing" ? "text-foreground border-b-2 border-foreground" : "text-muted-foreground"
+                )}
+            >
+                Billing
+            </Link>
+            <Link
                 href="/dashboard/account/settings"
                 className={cn(
                     "text-sm font-medium px-6 py-2 relative border-b-2 border-transparent",

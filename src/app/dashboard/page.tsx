@@ -1,8 +1,8 @@
-import { AddSymptomCard, Banner, Icons, Recommendations } from "@/components";
+import { Recommendations } from "@/components";
 import MagicCard from "@/components/ui/magic-card";
 import { db } from "@/lib";
 import { currentUser } from "@clerk/nextjs/server";
-import { ArrowRightIcon, BrainIcon, HeartPulseIcon, NotepadTextIcon, SearchIcon, StethoscopeIcon, TabletsIcon } from "lucide-react";
+import { BrainIcon, HeartPulseIcon, NotepadTextIcon, StethoscopeIcon } from "lucide-react";
 import Link from "next/link";
 
 

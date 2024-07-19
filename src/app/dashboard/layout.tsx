@@ -15,7 +15,7 @@ const DashboardLayout = async ({ children }: Props) => {
     if (!user) {
         redirect("/auth/signin");
     }
-    console.log(user, "User");
+    // console.log(user, "User");
 
     const dbUser = await db.user.findUnique({
         where: {
@@ -35,9 +35,11 @@ const DashboardLayout = async ({ children }: Props) => {
         redirect("/onboarding?step=1");
     }
 
+    const isSubscribed = dbUser?.stripeCustomerId ? true : false;
+
     return (
         <main className="mx-auto w-full relative">
-            <DashboardNavbar />
+            <DashboardNavbar isSubscribed={isSubscribed} />
             <Sidebar />
             <div className="pl-16 flex flex-col w-full">
                 <div className="flexe flex-col items-start w-full p-4">

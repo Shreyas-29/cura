@@ -30,9 +30,9 @@ export const generateMetadata = ({
     title: title,
     description: description,
     icons: icons,
-    // openGraph: {
-    //     title,
-    //     description,
-    //     ...(image && { images: [{ url: image }] }),
-    // },
+    openGraph: {
+        title,
+        description,
+        ...(image && { images: [{ url: image }] }),
+    },
 });

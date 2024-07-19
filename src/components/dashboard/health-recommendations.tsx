@@ -7,8 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import { HeartPulseIcon, LoaderIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import HealthPlanModal from "./modals/health-plan-modal";
-import { Button } from "./ui/button";
+import HealthPlanModal from "@/components/modals/health-plan-modal";
+import { Button } from "@/components/ui/button";
 
 interface Props {
     symptoms: Symptom[];

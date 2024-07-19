@@ -11,6 +11,10 @@ import UserAccountNavbar from "./navigation/user-account-navbar";
 import Sidebar from "./dashboard/sidebar";
 import Banner from "./dashboard/banner";
 import Recommendations from "./dashboard/recommendations";
+import CheckoutButton from "./dashboard/checkout-button";
+import ChatBox from "./dashboard/chat-box";
+import HealthTips from "./dashboard/health-tips";
+import HealthRecommendations from "./dashboard/health-recommendations";
 
 import Header from "./onboarding/header";
 import Steps from "./onboarding/steps";
@@ -26,11 +30,7 @@ import MedicationModal from "./modals/medication-modal";
 import UserDetailsModal from "./modals/user-details-modal";
 
 import Loader from "./loader";
-import ChatBox from "./chat-box";
 import UserAccount from "./user-account";
-import HealthTips from "./health-tips";
-import AddSymptomCard from "./add-symptom-card";
-import HealthRecommendations from "./health-recommendations";
 
 export {
     Icons,
@@ -52,7 +52,6 @@ export {
     ChatBox,
     HealthPlanModal,
     HealthTips,
-    AddSymptomCard,
     HealthRecommendations,
     UserAccountNavbar,
     SymptomModal,
@@ -61,4 +60,5 @@ export {
     Sidebar,
     Banner,
     Recommendations,
+    CheckoutButton,
 };

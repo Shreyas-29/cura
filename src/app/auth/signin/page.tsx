@@ -14,6 +14,8 @@ import { Icons } from "@/components";
 
 const SignInPage = () => {
 
+    const router = useRouter();
+
     const { isLoaded, signIn, setActive } = useSignIn();
 
     const [email, setEmail] = useState<string>("");
@@ -24,14 +26,14 @@ const SignInPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        setIsLoading(true);
-
         if (!isLoaded) return;
 
         if (!email || !password) {
             toast.error("Please fill in all fields");
             return;
         }
+
+        setIsLoading(true);
 
         try {
             const signInAttempt = await signIn.create({
@@ -42,6 +44,7 @@ const SignInPage = () => {
 
             if (signInAttempt.status === "complete") {
                 await setActive({ session: signInAttempt.createdSessionId });
+                router.push("/dashboard");
             } else {
                 console.error(JSON.stringify(signInAttempt, null, 2));
                 toast.error("Invalid email or password. Please try again.");
@@ -76,7 +79,8 @@ const SignInPage = () => {
             </Link>
 
             <div className="flex flex-col text-center gap-1">
-                <h1 className="text-2xl font-bold font-heading pt-2">
+                <Icons.logo className="w-12 h-12 mx-auto" />
+                <h1 className="text-2xl font-bold font-heading mt-2">
                     Sign In
                 </h1>
                 <p className="text-muted-foreground">
@@ -113,7 +117,7 @@ const SignInPage = () => {
                             type="button"
                             size="icon"
                             variant="ghost"
-                            className="absolute top-1 right-1"
+                            className="absolute top-1 right-1 hover:translate-y-0"
                             onClick={() => setShowPassword(!showPassword)}
                         >
                             {showPassword ?
@@ -125,8 +129,9 @@ const SignInPage = () => {
                 </div>
                 <div className="mt-6">
                     <Button
-                        size="default"
                         type="submit"
+                        size="default"
+                        disabled={isLoading}
                         className="w-full"
                     >
                         {isLoading ? (

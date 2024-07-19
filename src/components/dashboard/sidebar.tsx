@@ -22,14 +22,14 @@ const Sidebar = () => {
             <div className="flex flex-col items-center w-full h-full">
                 <div className="flex items-center justify-center py-4">
                     <Link href="/dashboard">
-                        <Icons.icon className="w-8 h-8 rounded-lg" />
+                        <Icons.logo className="w-8 h-8 rounded-lg" />
                     </Link>
                 </div>
                 <TooltipProvider>
                     <ul className="space-y-2 flex flex-col items-center justify-center w-full">
                         {LINKS.map((link, index) => {
                             const isActive = pathname === link.href;
-                            console.log(pathname, link.href)
+                            // console.log(pathname, link.href)
                             return (
                                 <Tooltip key={link.label} delayDuration={0}>
                                     <TooltipTrigger>

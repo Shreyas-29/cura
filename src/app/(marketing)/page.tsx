@@ -78,7 +78,7 @@ const HomePage = () => {
 
             {/* pricing */}
             <MaxWidthWrapper className="py-10">
-                <div className="flex flex-col text-start md:text-center text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
+                <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
                     <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
                         Choose a <span className="text-gradient">plan</span> that works for you
                     </h2>
@@ -86,7 +86,7 @@ const HomePage = () => {
                         Get started with our free plan or upgrade to a premium plan for additional features
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 w-full py-8 gap-6 max-w-3xl px-0 lg:px-8 mx-auto w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 py-8 gap-6 max-w-3xl px-0 lg:px-8 mx-auto w-full">
                     {PLANS.map((plan, index) => (
                         <AnimationContainer key={plan.name} delay={baseDelay + index / 5} className="flex flex-col w-full h-full">
                             <Card className={cn(

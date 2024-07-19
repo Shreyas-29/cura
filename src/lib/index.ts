@@ -1,5 +1,6 @@
 import { cn } from "./cn";
 import { db } from "./db";
+import { stripe } from "./stripe";
 
 import { StepOneSchema, type StepOneSchemaType } from "./validators/step-one";
 import { StepTwoSchema, type StepTwoSchemaType } from "./validators/step-two";
@@ -9,6 +10,7 @@ import { StepFourSchema, type StepFourSchemaType } from "./validators/step-four"
 export {
     cn,
     db,
+    stripe,
     StepOneSchema,
     StepOneSchemaType,
     StepTwoSchema,

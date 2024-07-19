@@ -3,6 +3,7 @@ import updateUser from "./update-user";
 import createMessages from "./create-messages";
 import createSymptom from "./create-symptom";
 import createMedication from "./create-medication";
+import createCheckoutSession from "./create-checkout-session";
 
 import getAuthStatus from "./get-auth-status";
 import getHealthPlan from "./get-health-plan";
@@ -20,4 +21,5 @@ export {
     getHealthTips,
     getMessags,
     getRecommndations,
+    createCheckoutSession,
 }

@@ -6,7 +6,7 @@ export const inter = Inter({
     variable: "--font-inter",
 });
 
-export const dmSans = DM_Sans({
+export const dmSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
     variable: "--font-dmsans",
 });

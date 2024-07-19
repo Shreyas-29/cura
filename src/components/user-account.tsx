@@ -15,7 +15,7 @@ const UserAccount = () => {
 
     const handleSignOut = () => {
         signOut();
-        router.push("/auth/signin");
+        // router.push("/auth/signin");
     };
 
     if (!user) {
@@ -65,14 +65,6 @@ const UserAccount = () => {
                         <>
                             <UserIcon className="w-4 h-4" />
                             Account
-                        </>
-                    </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="p-0">
-                    <Link href="#" className="flex items-center gap-2 px-4 py-2 w-full hover:bg-accent rounded-md">
-                        <>
-                            <HelpCircleIcon className="w-4 h-4" />
-                            Help
                         </>
                     </Link>
                 </DropdownMenuItem>

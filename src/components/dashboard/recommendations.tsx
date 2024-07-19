@@ -66,7 +66,7 @@ const Recommendations = ({ symptoms, medications, user }: Props) => {
                             {recommendations}
                         </ReactMarkdown>
                     ) : (
-                        <p className="text-sm text-muted-foreground font-medium text-center w-full">
+                        <p className="text-sm text-muted-foreground font-medium text-center w-full min-h-40">
                             {error || "No recommendations available"}
                         </p>
                     )}
