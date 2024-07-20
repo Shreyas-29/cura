@@ -102,8 +102,8 @@ const HomePage = () => {
                                     </CardDescription>
                                     <h5 className="text-3xl md:text-4xl font-semibold font-heading pt-2">
                                         ${plan.price}
-                                        <span className="text-base text-muted-foreground font-normal">
-                                            /month
+                                        <span className="text-sm text-muted-foreground font-normal">
+                                            {plan.name === "Pro" ? "(one time)" : ""}
                                         </span>
                                     </h5>
                                 </CardHeader>

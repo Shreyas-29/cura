@@ -124,8 +124,8 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
             });
 
             const result = await chat.sendMessage(input);
-            const response = await result.response;
-            const botMessageContent = await response.text();
+            const response = result.response;
+            const botMessageContent = response.text();
 
             const botMessage = { role: "model", content: botMessageContent };
 
