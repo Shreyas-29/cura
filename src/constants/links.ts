@@ -23,7 +23,7 @@ export const LINKS = [
     },
     {
         label: "AI Chat",
-        href: "/dashboard/health-plan",
+        href: "/dashboard/ai",
         icon: BotIcon,
     },
     {

@@ -1,9 +1,9 @@
 import { getMessags } from "@/actions";
-import { ChatBox, HealthRecommendations } from "@/components";
+import { ChatBox } from "@/components";
 import { db } from "@/lib";
 import { currentUser } from "@clerk/nextjs/server";
 
-const HealthPlanPage = async () => {
+const AIPage = async () => {
 
     const messages = await getMessags();
 
@@ -28,13 +28,8 @@ const HealthPlanPage = async () => {
     });
 
     return (
-        <div className="flex flex-col items-start w-full h-[calc(100dvh-56px)] py-4">
-            <div className="flex flex-col items-center h-full w-full gap-6">
-                <HealthRecommendations
-                    symptoms={symptoms}
-                    medications={medications}
-                    user={dbUser!}
-                />
+        <div className="flex flex-col items-start w-full h-[calc(100dvh-92px)] pt-2 md:py-4">
+            <div className="flex flex-col items-center h-full w-full">
                 <ChatBox
                     user={dbUser!}
                     symptoms={symptoms}
@@ -46,4 +41,4 @@ const HealthPlanPage = async () => {
     );
 };
 
-export default HealthPlanPage;
+export default AIPage;

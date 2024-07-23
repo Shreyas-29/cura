@@ -19,7 +19,7 @@ const Settings = () => {
     } = useSettingsModal();
 
     return (
-        <div className="flex flex-col items-start justify-start w-full max-w-3xl py-8 mx-auto px-4">
+        <div className="flex flex-col items-start justify-start w-full max-w-3xl py-8 mx-auto">
             <div className="flex flex-col items-start gap-2">
                 <h2 className="text-xl font-semibold">
                     Manage your settings

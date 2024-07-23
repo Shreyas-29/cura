@@ -14,7 +14,6 @@ import Recommendations from "./dashboard/recommendations";
 import CheckoutButton from "./dashboard/checkout-button";
 import ChatBox from "./dashboard/chat-box";
 import HealthTips from "./dashboard/health-tips";
-import HealthRecommendations from "./dashboard/health-recommendations";
 
 import Header from "./onboarding/header";
 import Steps from "./onboarding/steps";
@@ -52,7 +51,6 @@ export {
     ChatBox,
     HealthPlanModal,
     HealthTips,
-    HealthRecommendations,
     UserAccountNavbar,
     SymptomModal,
     MedicationModal,

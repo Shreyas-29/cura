@@ -18,13 +18,9 @@ const Sidebar = () => {
     const pathname = usePathname();
 
     return (
-        <div className="fixed left-0 inset-y-0 h-full w-16 border-r border-border bg-background z-50">
-            <div className="flex flex-col items-center w-full h-full">
-                <div className="flex items-center justify-center py-4">
-                    <Link href="/dashboard">
-                        <Icons.logo className="w-8 h-8 rounded-lg" />
-                    </Link>
-                </div>
+        <div className="fixed left-0 inset-y-0 h-full w-12 md:w-16 border-r border-border bg-background z-40">
+            <div className="flex flex-col items-center w-full h-full pt-16">
+                
                 <TooltipProvider>
                     <ul className="space-y-2 flex flex-col items-center justify-center w-full">
                         {LINKS.map((link, index) => {
@@ -41,7 +37,7 @@ const Sidebar = () => {
                                                 <link.icon strokeWidth={1.7} className="w-5 h-5" />
                                                 <span className="sr-only">{link.label}</span>
                                             </Link>
-                                            <TooltipContent align="end" className="text-xs dark">
+                                            <TooltipContent side="right" className="text-xs hidden md:flex">
                                                 {link.label}
                                             </TooltipContent>
                                         </li>

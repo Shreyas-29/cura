@@ -100,6 +100,7 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
             });
 
             const promptText = generatePrompt({ symptoms, medications, user });
+            console.log(promptText);
 
             const chat = model.startChat({
                 history: [
@@ -113,7 +114,7 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     parts: [{ text: message.content }],
                 })),
                 generationConfig: {
-                    maxOutputTokens: 100,
+                    maxOutputTokens: 200,
                 },
                 systemInstruction: {
                     role: "model",
@@ -150,9 +151,9 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
 
     return (
         <div className="flex flex-col h-full w-full relative">
-            <div className="h-[calc(100vh-180px)] w-full md:border rounded-xl flex flex-col">
+            <div className="flex flex-col md:border rounded-xl h-full w-full">
                 <div className="w-full h-full overflow-y-scroll space-y-4 md:p-4 flex flex-col flex-1 scrollbar-hide">
-                    <div className="absolute top-px inset-x-0 md:inset-x-2 w-full md:w-[98%] mx-auto h-10 bg-gradient-to-b from-background rounded-t-none md:rounded-t-xl"></div>
+                    <div className="absolute top-0 md:top-px inset-x-0 md:inset-x- w-full md:w-[calc(100%-4px)] mx-auto h-10 bg-gradient-to-b from-background rounded-t-none md:rounded-t-xl"></div>
                     {!isLoading && error && (
                         <div className="flex items-center justify-center w-full py-8 h-full">
                             <p className="text-sm text-red-500 bg-red-50 px-4 py-1.5 rounded-md mx-auto font-medium flex items-center">
@@ -194,12 +195,14 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     {isLoading && (
                         <div className="flex flex-col justify-center items-center p-4">
                             <LoaderIcon className="w-5 h-5 animate-spin" />
-                            <p className="text-sm text-muted-foreground font-medium">Assistant is typing...</p>
+                            <p className="text-sm text-muted-foreground font-medium">
+                                Assistant is thinking...
+                            </p>
                         </div>
                     )}
                     <div ref={messagesEndRef} />
                 </div>
-                <div className="w-full rounded-xl">
+                <div className="w-full rounded-xl sticky bottom-0 inset-x-0">
                     <form onSubmit={handleSendMessage} className="flex gap-4 rounded-xl py-3 md:px-3">
                         <Input
                             type="text"

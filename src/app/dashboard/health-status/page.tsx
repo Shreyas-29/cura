@@ -26,7 +26,7 @@ const HealthStatusPage = async () => {
 
     return (
         <div className="flex flex-col items-start w-full">
-            <div className="w-full py-8 px-4">
+            <div className="w-full p-2 md:p-4">
                 <h1 className="text-2xl font-semibold font-heading">
                     Health Status
                 </h1>

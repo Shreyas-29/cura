@@ -51,7 +51,7 @@ const Recommendations = ({ symptoms, medications, user }: Props) => {
     }, [mutate]);
 
     return (
-        <div className="flex flex-col w-full px-4 rounded-xl border-2 border-border max-h-72 overflow-y-scroll scrollbar-hide">
+        <div className="flex flex-col w-full px-4 rounded-xl border border-border/80 max-h-full overflow-y-scroll scrollbar-hide">
             {isLoading ? (
                 <div className="flex flex-col items-center justify-center w-full">
                     <LoaderIcon className="w-6 h-6 animate-spin" />

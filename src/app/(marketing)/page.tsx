@@ -24,7 +24,7 @@ const HomePage = () => {
                         <div className="w-52 h-52 rounded-full bg-orange-500 blur-[10rem] opacity-70 -z-10"></div>
                         <div className="hidden lg:w-52 h-52 rounded-full bg-amber-500 blur-[10rem] opacity-70 -z-10"></div>
                     </div>
-                    <h1 className="text-foreground py-6 text-5xl font-semibold md:font-semibold !leading-tight tracking-normal text-balance sm:text-6xl md:text-7xl w-full">
+                    <h1 className="text-foreground py-6 text-5xl font-semibold md:font-bold !leading-tight tracking-normal text-balance sm:text-6xl md:text-7xl w-full">
                         Your personal <br /> <span className="bg-gradient-to-r from-primary to-amber-500 text-transparent bg-clip-text">health</span> assistant
                     </h1>
                     <p className="text-muted-foreground text-base md:text-lg max-w-xl py-2">
@@ -46,10 +46,10 @@ const HomePage = () => {
                         <div className="absolute md:top-[20%] left-1/2 gradient w-3/4 -translate-x-1/2 h-1/4 md:h-1/3 inset-0 blur-[10rem] animate-image-glow"></div>
                         <div className="-m-2 rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl mx-auto flex items-center justify-center w-max">
                             <Image
-                                src="/images/dashboard.svg"
+                                src="/images/dashboard.png"
                                 alt="Dashboard"
-                                width={1000}
-                                height={1200}
+                                width={2560}
+                                height={1426}
                                 quality={100}
                                 priority
                                 className="rounded-md lg:rounded-xl mx-auto bg-foreground/10 ring-1 ring-border"
