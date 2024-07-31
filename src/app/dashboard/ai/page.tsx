@@ -28,7 +28,7 @@ const AIPage = async () => {
     });
 
     return (
-        <div className="flex flex-col items-start w-full h-[calc(100dvh-92px)] pt-2 md:py-4">
+        <div className="flex flex-col items-start w-full h-[calc(100dvh-52px)] sm:h-[calc(100dvh-72px)] pt-2 md:py-4">
             <div className="flex flex-col items-center h-full w-full">
                 <ChatBox
                     user={dbUser!}

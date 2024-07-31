@@ -98,6 +98,7 @@ const SignInPage = () => {
                         type="email"
                         placeholder="Enter your email address"
                         value={email}
+                        disabled={isLoading}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
@@ -111,12 +112,14 @@ const SignInPage = () => {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             value={password}
+                            disabled={isLoading}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button
                             type="button"
                             size="icon"
                             variant="ghost"
+                            disabled={isLoading}
                             className="absolute top-1 right-1 hover:translate-y-0"
                             onClick={() => setShowPassword(!showPassword)}
                         >

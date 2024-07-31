@@ -41,7 +41,7 @@ const DashboardLayout = async ({ children }: Props) => {
         <main className="mx-auto w-full min-h-screen relative">
             <DashboardNavbar isSubscribed={isSubscribed} />
             <Sidebar />
-            <div className="pl-14 sm:pl-20 lg:pl-16 flex flex-col w-full pr-2 py-4 lg:p-4">
+            <div className="sm:pl-20 lg:pl-16 flex flex-col w-full px-2 py-4 lg:p-4">
                 {children}
             </div>
         </main>

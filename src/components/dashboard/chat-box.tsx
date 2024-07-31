@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib";
 
 interface Props {
     user: User;
@@ -150,10 +151,9 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
     }, [messages]);
 
     return (
-        <div className="flex flex-col h-full w-full relative">
+        <div className="flex flex-col h-full w-full relative sm:pl-4">
             <div className="flex flex-col md:border rounded-xl h-full w-full">
-                <div className="w-full h-full overflow-y-scroll space-y-4 md:p-4 flex flex-col flex-1 scrollbar-hide">
-                    <div className="absolute top-0 md:top-px inset-x-0 md:inset-x- w-full md:w-[calc(100%-4px)] mx-auto h-10 bg-gradient-to-b from-background rounded-t-none md:rounded-t-xl"></div>
+                <div className="w-full h-full overflow-y-scroll space-y-4 md:p-4 pb-12 flex flex-col flex-1 scrollbar-hide rounded-xl">
                     {!isLoading && error && (
                         <div className="flex items-center justify-center w-full py-8 h-full">
                             <p className="text-sm text-red-500 bg-red-50 px-4 py-1.5 rounded-md mx-auto font-medium flex items-center">
@@ -173,7 +173,11 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     {msgs?.map((message, index) => (
                         <div
                             key={index}
-                            className={`flex max-w-lg ${message.role === "user" ? "text-right ml-auto" : "text-left mr-auto"}`}
+                            // className={`flex max-w-lg ${message.role === "user" ? "text-right ml-auto" : "text-left mr-auto"}`}
+                            className={cn(
+                                "flex max-w-lg",
+                                message.role === "user" ? "ml-auto max-w-72 sm:max-w-lg" : "mr-auto"
+                            )}
                         >
                             {message.role === "user" ? (
                                 <div className="flex items-end">
@@ -202,24 +206,26 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     )}
                     <div ref={messagesEndRef} />
                 </div>
-                <div className="w-full rounded-xl sticky bottom-0 inset-x-0">
-                    <form onSubmit={handleSendMessage} className="flex gap-4 rounded-xl py-3 md:px-3">
+                <div className="w-full rounded-xl fixed sm:sticky bottom-0 inset-x-0 px-2 bg-background">
+                    <form onSubmit={handleSendMessage} className="flex flex-row items-center gap-x-4 rounded-xl py-3 md:px-3">
                         <Input
                             type="text"
                             value={input}
                             disabled={isLoading}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Ask about your health..."
-                            className="flex-grow focus-visible:ring-0 focus-visible:ring-transparent border"
+                            className="flex-1 min-w-0 focus-visible:ring-0 focus-visible:ring-transparent border"
                         />
-                        <Button
-                            size="iconlg"
-                            type="submit"
-                            disabled={isLoading || !input.trim()}
-                            className=""
-                        >
-                            {isLoading ? <LoaderIcon className="w-5 h-5 animate-spin" /> : <SendIcon className="w-5 h-5" />}
-                        </Button>
+                        <div className="flex items-center justify-center w-10">
+                            <Button
+                                size="iconlg"
+                                type="submit"
+                                disabled={isLoading || !input.trim()}
+                                className="flex-shrink-0"
+                            >
+                                {isLoading ? <LoaderIcon className="w-5 h-5 animate-spin" /> : <SendIcon className="w-5 h-5" />}
+                            </Button>
+                        </div>
                     </form>
                 </div>
             </div>
