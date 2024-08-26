@@ -1,27 +1,24 @@
 "use client";
 
-import React, { useState } from "react"
-import Icons from "../global/icons";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import UserAccount from "../user-account";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
+    SheetTrigger
+} from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import Sidebar from "../dashboard/sidebar";
+import Icons from "../global/icons";
+import { Button } from "../ui/button";
+import UserAccount from "../user-account";
 
 
 interface Props {
-    isSubscribed: boolean;
+    isPro: boolean;
 }
 
-const DashboardNavbar = ({ isSubscribed }: Props) => {
+const DashboardNavbar = ({ isPro }: Props) => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -53,7 +50,7 @@ const DashboardNavbar = ({ isSubscribed }: Props) => {
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    {!isSubscribed && (
+                    {!isPro && (
                         <Button asChild size="sm" variant="secondary">
                             <Link href="/dashboard/account/billing">
                                 Upgrade

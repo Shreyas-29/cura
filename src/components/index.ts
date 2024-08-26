@@ -9,7 +9,6 @@ import DashboardNavbar from "./navigation/dashboard-navbar";
 import UserAccountNavbar from "./navigation/user-account-navbar";
 
 import Sidebar from "./dashboard/sidebar";
-import Banner from "./dashboard/banner";
 import Recommendations from "./dashboard/recommendations";
 import CheckoutButton from "./dashboard/checkout-button";
 import ChatBox from "./dashboard/chat-box";
@@ -56,7 +55,6 @@ export {
     MedicationModal,
     UserDetailsModal,
     Sidebar,
-    Banner,
     Recommendations,
     CheckoutButton,
 };

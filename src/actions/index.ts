@@ -5,14 +5,12 @@ import createSymptom from "./create-symptom";
 import createMedication from "./create-medication";
 import createCheckoutSession from "./create-checkout-session";
 
-import getAuthStatus from "./get-auth-status";
 import getHealthTips from "./get-health-tips";
 import getMessags from "./get-messages";
 import getRecommndations from "./get-recommendations";
 
 export {
     updateUser,
-    getAuthStatus,
     createMessages,
     createSymptom,
     createMedication,

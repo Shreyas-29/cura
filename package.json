@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.6",
+    "@clerk/types": "^4.14.0",
     "@google/generative-ai": "^0.13.0",
     "@headlessui/react": "^2.1.0",
     "@hookform/resolvers": "^3.6.0",

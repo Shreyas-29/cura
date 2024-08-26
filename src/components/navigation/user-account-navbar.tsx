@@ -7,7 +7,7 @@ import React from "react"
 
 const UserAccountNavbar = () => {
 
-    const pathname = usePathname();
+    const pathname = usePathname(); 
 
     return (
         <nav className="flex items-center justify-evenly md:justify-start w-full pt-4 max-w-3xl mx-auto overflow-x-scroll scrollbar-hide">

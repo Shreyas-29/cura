@@ -12,15 +12,18 @@ import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib";
+import Link from "next/link";
+import { toast } from "sonner";
 
 interface Props {
+    isPro: boolean;
     user: User;
     symptoms: Symptom[];
     medications: Medication[];
     messages: Message[];
 }
 
-const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
+const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -87,6 +90,12 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
     const handleSendMessage = async (e: FormEvent) => {
         e.preventDefault();
 
+        if (!isPro && msgs.length >= 10) {
+            setError("Message limit reached. Please upgrade to pro.");
+            toast.error("Message limit reached. Please upgrade to pro.");
+            return;
+        }
+
         if (!input.trim()) return;
 
         const newMessages = [...msgs, { role: "user", content: input }];
@@ -97,11 +106,11 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
 
         try {
             const model = ai.getGenerativeModel({
-                model: "gemini-1.5-flash"
+                // model: "gemini-1.5-flash"
+                model: "gemini-1.5-pro-exp-0801"
             });
 
             const promptText = generatePrompt({ symptoms, medications, user });
-            console.log(promptText);
 
             const chat = model.startChat({
                 history: [
@@ -116,6 +125,7 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                 })),
                 generationConfig: {
                     maxOutputTokens: 200,
+                    temperature: 0,
                 },
                 systemInstruction: {
                     role: "model",
@@ -138,7 +148,6 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
             setMsgs((prev) => [...prev, botMessage]);
         } catch (error) {
             setError("Error generating response");
-            console.log("Error generating response:", error);
         } finally {
             setIsLoading(false);
         }
@@ -154,16 +163,8 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
         <div className="flex flex-col h-full w-full relative sm:pl-4">
             <div className="flex flex-col md:border rounded-xl h-full w-full">
                 <div className="w-full h-full overflow-y-scroll space-y-4 md:p-4 pb-12 flex flex-col flex-1 scrollbar-hide rounded-xl">
-                    {!isLoading && error && (
-                        <div className="flex items-center justify-center w-full py-8 h-full">
-                            <p className="text-sm text-red-500 bg-red-50 px-4 py-1.5 rounded-md mx-auto font-medium flex items-center">
-                                <TriangleAlertIcon className="w-4 h-4 mr-2" />
-                                {error}
-                            </p>
-                        </div>
-                    )}
                     {!isLoading && !error && msgs?.length === 0 && (
-                        <div className="flex flex-col items-center justify-center w-full py-8 h-full">
+                        <div className="flex flex-col items-center justify-center text-center w-full py-8 h-full">
                             <BotIcon className="w-10 h-10 text-primary" />
                             <p className="text-sm text-muted-foreground font-medium mt-2">
                                 Start a conversation with your personal assistant
@@ -173,7 +174,6 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                     {msgs?.map((message, index) => (
                         <div
                             key={index}
-                            // className={`flex max-w-lg ${message.role === "user" ? "text-right ml-auto" : "text-left mr-auto"}`}
                             className={cn(
                                 "flex max-w-lg",
                                 message.role === "user" ? "ml-auto max-w-72 sm:max-w-lg" : "mr-auto"
@@ -196,8 +196,27 @@ const ChatBox = ({ user, symptoms, medications, messages }: Props) => {
                             )}
                         </div>
                     ))}
+                    {!isLoading && error && (
+                        <div className="flex flex-col items-center justify-center w-full py-8 h-full">
+                            <p className="text-sm text-red-500 bg-red-50 px-4 py-1.5 rounded-md mx-auto font-medium flex items-center">
+                                <TriangleAlertIcon className="w-4 h-4 mr-2" />
+                                {error}
+                            </p>
+                            {!isPro && (
+                                <Button
+                                    asChild
+                                    size="sm"
+                                    className="mt-4"
+                                >
+                                    <Link href="/dashboard/account/billing">
+                                        Upgrade to Pro
+                                    </Link>
+                                </Button>
+                            )}
+                        </div>
+                    )}
                     {isLoading && (
-                        <div className="flex flex-col justify-center items-center p-4">
+                        <div className="flex flex-col justify-center items-center text-center p-4">
                             <LoaderIcon className="w-5 h-5 animate-spin" />
                             <p className="text-sm text-muted-foreground font-medium">
                                 Assistant is thinking...

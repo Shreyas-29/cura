@@ -28,13 +28,7 @@ const SummaryPage = async () => {
         },
     });
 
-    const mentalWellness = await db.mentalWellness.findMany({
-        where: {
-            userId: user?.id,
-        },
-    });
-
-    const { age, bloodGroup, height, weight, gender, medicalIssues, image, firstName } = dbUser;
+    const { age, bloodGroup, height, weight, gender, medicalIssues } = dbUser;
 
     return (
         <div className="flex flex-col items-start w-full">

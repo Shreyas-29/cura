@@ -1,17 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
-import axios from "axios";
-import { z } from "zod";
-import { toast } from "sonner";
-import { format } from "date-fns";
-import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMediaQuery } from "usehooks-ts";
 import { RadioGroup } from "@headlessui/react";
-import { LoaderIcon, CalendarIcon, ArrowRightIcon } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { LoaderIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { useMediaQuery } from "usehooks-ts";
 
+import { updateUser } from "@/actions";
+import { Button } from "@/components/ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle
+} from "@/components/ui/dialog";
+import {
+    Drawer,
+    DrawerContent,
+    DrawerHeader,
+    DrawerTitle
+} from "@/components/ui/drawer";
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -19,44 +37,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import {
-    Drawer,
-    DrawerClose,
-    DrawerContent,
-    DrawerDescription,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerTitle,
-    DrawerTrigger,
-} from "@/components/ui/drawer"
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogClose,
-    DialogFooter,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar";
-import { createMedication, updateUser } from "@/actions";
 import { useSettingsModal } from "@/hooks";
 import { cn, StepOneSchema, StepOneSchemaType } from "@/lib";
 import { useClerk } from "@clerk/nextjs";
-import { Textarea } from "../ui/textarea";
 
 const UserDetailsModal = () => {
 

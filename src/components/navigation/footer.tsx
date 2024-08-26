@@ -25,12 +25,13 @@ const Footer = () => {
                                 </p>
                                 <form className="flex">
                                     <Input
+                                        required
                                         type="email"
                                         placeholder="Enter your email"
                                         className="rounded-l-lg rounded-r-none border focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 h-9"
                                     />
                                     <Button
-                                        type="button"
+                                        type="submit"
                                         className="rounded-r-lg rounded-l-none hover:shadow-none hover:translate-y-0"
                                     >
                                         Get notified
@@ -45,22 +46,22 @@ const Footer = () => {
                                 </h3>
                                 <ul className="text-muted-foreground text-sm space-y-2">
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             About
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Services
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Careers
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Results
                                         </Link>
                                     </li>
@@ -72,22 +73,22 @@ const Footer = () => {
                                 </h3>
                                 <ul className="text-muted-foreground text-sm space-y-2">
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Help
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Blog
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Privacy
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#">
+                                        <Link href="#" className="hover:text-foreground">
                                             Terms
                                         </Link>
                                     </li>

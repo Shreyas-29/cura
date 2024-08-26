@@ -96,7 +96,7 @@ const SignUpPage = () => {
 
             if (completeSignUp.status === "complete") {
                 await setActive({ session: completeSignUp.createdSessionId });
-                router.push("/auth/auth-callback?type=signup");
+                router.push("/auth/auth-callback");
             } else {
                 console.error(JSON.stringify(completeSignUp, null, 2));
                 toast.error("Invalid verification code. Please try again.");
@@ -112,13 +112,10 @@ const SignUpPage = () => {
     return isVerified ? (
         <div className="flex flex-col items-center justify-center h-screen gap-y-6">
 
-            <Link href="/" className={buttonVariants({ size: "sm", variant: "outline", className: "absolute top-4 left-4" })}>
-                <ArrowLeftIcon className="w-4 h-4 mr-1" />
-                Back
-            </Link>
-
             <div className="flex flex-col text-center gap-1">
-                <Icons.logo className="w-12 h-12 mx-auto" />
+                <Link href="/">
+                    <Icons.logo className="w-12 h-12 mx-auto" />
+                </Link>
                 <h1 className="text-2xl font-bold font-heading mt-2">
                     Please check your email
                 </h1>
@@ -167,13 +164,10 @@ const SignUpPage = () => {
     ) : (
         <div className="flex flex-col items-center justify-center h-screen gap-y-6">
 
-            <Link href="/" className={buttonVariants({ size: "sm", variant: "outline", className: "absolute top-4 left-4" })}>
-                <ArrowLeftIcon className="w-4 h-4 mr-1" />
-                Back
-            </Link>
-
             <div className="flex flex-col text-center gap-1">
-                <Icons.logo className="w-12 h-12 mx-auto" />
+                <Link href="/">
+                    <Icons.logo className="w-12 h-12 mx-auto" />
+                </Link>
                 <h1 className="text-2xl font-bold font-heading mt-2">
                     Sign Up
                 </h1>

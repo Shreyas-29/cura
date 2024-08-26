@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
-import { toast } from "sonner";
-import { ArrowLeftIcon, EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
-import { useSignIn } from "@clerk/nextjs";
 import { Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useSignIn } from "@clerk/nextjs";
+import { EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
 const SignInPage = () => {
 
@@ -39,7 +38,7 @@ const SignInPage = () => {
             const signInAttempt = await signIn.create({
                 identifier: email,
                 password,
-                redirectUrl: "/auth/auth-callback?type=signin",
+                redirectUrl: "/auth/auth-callback",
             });
 
             if (signInAttempt.status === "complete") {
@@ -73,13 +72,10 @@ const SignInPage = () => {
     return (
         <div className="flex flex-col items-center justify-center h-screen gap-y-6">
 
-            <Link href="/" className={buttonVariants({ size: "sm", variant: "outline", className: "absolute top-4 left-4" })}>
-                <ArrowLeftIcon className="w-4 h-4 mr-1" />
-                Back
-            </Link>
-
             <div className="flex flex-col text-center gap-1">
-                <Icons.logo className="w-12 h-12 mx-auto" />
+                <Link href="/">
+                    <Icons.logo className="w-12 h-12 mx-auto" />
+                </Link>
                 <h1 className="text-2xl font-bold font-heading mt-2">
                     Sign In
                 </h1>

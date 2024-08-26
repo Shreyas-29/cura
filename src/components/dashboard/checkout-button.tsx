@@ -8,12 +8,12 @@ import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 interface Props {
-    isSubscribed: boolean;
+    isPro: boolean;
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const CheckoutButton = ({ isSubscribed }: Props) => {
+const CheckoutButton = ({ isPro }: Props) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -40,7 +40,7 @@ const CheckoutButton = ({ isSubscribed }: Props) => {
 
     return (
         <div className="flex flex-col items-start w-full">
-            {!isSubscribed && (
+            {!isPro && (
                 <Button
                     type="button"
                     variant="black"
@@ -50,7 +50,7 @@ const CheckoutButton = ({ isSubscribed }: Props) => {
                 >
                     {isLoading ? (
                         <LoaderIcon className="w-4 h-4 animate-spin" />
-                    ) : isSubscribed ? "Manage Subscription" : "Upgrade to Pro"}
+                    ) : isPro ? "Manage Subscription" : "Upgrade to Pro"}
                 </Button>
             )}
         </div>

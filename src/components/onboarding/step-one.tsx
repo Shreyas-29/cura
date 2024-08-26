@@ -1,25 +1,20 @@
 "use client";
 
-import React from "react";
-import { z } from "zod";
-import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
     Form,
-    FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -27,8 +22,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup } from "@headlessui/react";
 import { cn, StepOneSchema, StepOneSchemaType } from "@/lib";
+import { RadioGroup } from "@headlessui/react";
 import { ArrowRightIcon, LoaderIcon } from "lucide-react";
 
 interface Props {

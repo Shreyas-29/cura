@@ -2,20 +2,16 @@
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useClerk } from "@clerk/nextjs";
-import { HelpCircleIcon, LogOutIcon, SettingsIcon, UserIcon } from "lucide-react";
+import { LogOutIcon, SettingsIcon, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const UserAccount = () => {
 
     const { signOut, user } = useClerk();
 
-    const router = useRouter();
-
     const handleSignOut = () => {
         signOut();
-        // router.push("/auth/signin");
     };
 
     if (!user) {

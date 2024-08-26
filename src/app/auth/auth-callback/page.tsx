@@ -1,34 +1,38 @@
-"use client";
+import { db } from "@/lib/db";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import React from 'react'
 
-import { getAuthStatus } from "@/actions";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+const AuthCallbackPage = async () => {
 
-const AuthCallbackPage = () => {
+    const user = await currentUser();
 
-    const router = useRouter();
-
-    const { data, isLoading } = useQuery({
-        queryKey: ["auth-callback"],
-        queryFn: async () => await getAuthStatus(),
-        retry: true,
-        retryDelay: 500,
-    });
-
-    if (data?.success) {
-        router.push("/onboarding");
+    if (!user?.id || !user?.primaryEmailAddress?.emailAddress) {
+        return redirect("/signin");
     }
 
-    return (
-        <div className="flex items-center justify-center flex-col relative h-screen">
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="w-8 h-8 border-2 border-border border-t-primary rounded-full animate-loader"></div>
-                <p className="text-lg font-medium text-center mt-3">
-                    Verifying your account...
-                </p>
-            </div>
-        </div>
-    )
+    const dbUser = await db.user.findFirst({
+        where: {
+            clerkId: user.id,
+        },
+    });
+
+    if (!dbUser) {
+        await db.user.create({
+            data: {
+                id: user.id,
+                clerkId: user.id,
+                email: user.primaryEmailAddress.emailAddress,
+                firstName: user.firstName!,
+                lastName: user.lastName || "",
+                image: user.imageUrl,
+            },
+        });
+
+        redirect("/onboarding");
+    }
+
+    redirect("/dashboard");
 };
 
-export default AuthCallbackPage;
+export default AuthCallbackPage

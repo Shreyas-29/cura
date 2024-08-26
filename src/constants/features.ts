@@ -1,4 +1,4 @@
-import { BellIcon, HeartHandshakeIcon, HeartPulseIcon, LucideIcon, PillIcon, WandSparklesIcon, StethoscopeIcon, UserIcon } from "lucide-react";
+import { HeartHandshakeIcon, HeartPulseIcon, LucideIcon, PillIcon, StethoscopeIcon, UserIcon, WandSparklesIcon } from "lucide-react";
 
 type Feature = {
     icon: LucideIcon;

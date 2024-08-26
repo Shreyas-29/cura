@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react"
-import Icons from "../global/icons";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { STEPS } from "@/constants";
-import { usePathname } from "next/navigation";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib";
-import StepOne from "./step-one";
-import StepTwo from "./step-two";
-import StepThree from "./step-three";
-import StepFour from "./step-four";
+import { useEffect, useState } from "react";
 import StepFive from "./step-five";
+import StepFour from "./step-four";
+import StepOne from "./step-one";
+import StepThree from "./step-three";
+import StepTwo from "./step-two";
 
 const stepComponents: { [key: string]: any } = {
     "step-one": StepOne,

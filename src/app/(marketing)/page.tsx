@@ -24,19 +24,19 @@ const HomePage = () => {
                         <div className="w-52 h-52 rounded-full bg-orange-500 blur-[10rem] opacity-70 -z-10"></div>
                         <div className="hidden lg:w-52 h-52 rounded-full bg-amber-500 blur-[10rem] opacity-70 -z-10"></div>
                     </div>
-                    <h1 className="text-foreground py-6 text-5xl font-semibold md:font-bold !leading-tight tracking-normal text-balance sm:text-6xl md:text-7xl w-full">
+                    <h1 className="text-foreground py-6 text-4xl sm:text-6xl md:text-7xl font-semibold md:font-bold !leading-snug tracking-normal text-balance w-full">
                         Your personal <br /> <span className="bg-gradient-to-r from-primary to-amber-500 text-transparent bg-clip-text">health</span> assistant
                     </h1>
                     <p className="text-muted-foreground text-base md:text-lg max-w-xl py-2">
                         Instantly get the right medications for your symptoms with AI-powered recommendations
                     </p>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full">
-                        <Link href="/dashboard" className={buttonVariants({ className: "mt-8" })}>
+                    <div className="flex flex-row md:flex-row items-center justify-center gap-4 mt-8 w-full">
+                        <Link href="/dashboard" className={buttonVariants()}>
                             Start for free
                             <ArrowRightIcon className="w-4 h-4 ml-1.5" />
                         </Link>
-                        <Link href="#" className={buttonVariants({ variant: "black", className: "mt-8" })}>
-                            <Icons.store className="w-4 h-4 text-white mr-1.5" />
+                        <Link href="#" className={buttonVariants({ variant: "black" })}>
+                            <Icons.store className="w-4 h-4 mr-1.5" />
                             Get the app
                         </Link>
                     </div>
@@ -61,7 +61,15 @@ const HomePage = () => {
 
             {/* features */}
             <MaxWidthWrapper className="py-10">
-                <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-8 md:gap-x-8 w-full">
+                <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
+                        Features that will <span className="text-gradient">amaze</span> you
+                    </h2>
+                    <p className="mt-4 text-muted-foreground max-w-lg">
+                        Cura is packed with features that will help you get the right medications for your symptoms
+                    </p>
+                </div>
+                <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-8 md:gap-x-8 w-full">
                     {FEATURES.map((feature) => (
                         <div key={feature.title} className="flex flex-col items-start">
                             <feature.icon className="w-8 h-8 text-primary" />
@@ -121,7 +129,7 @@ const HomePage = () => {
                                                     <Tooltip delayDuration={0}>
                                                         <TooltipTrigger asChild>
                                                             <p className={cn(
-                                                                "text-muted-foreground",
+                                                                "text-sm text-muted-foreground",
                                                                 feature.tooltip && "border-b border-dotted border-border cursor-pointer"
                                                             )}>
                                                                 {feature.text}
@@ -163,7 +171,7 @@ const HomePage = () => {
                             height={1200}
                             quality={100}
                             priority
-                            className="mx-auto lg:mr-auto h-[420px] max-w-sm"
+                            className="mx-auto lg:mr-auto h-[420px] max-w-full sm:max-w-sm"
                         />
                     </div>
                     <div className="flex flex-col items-center justify-center text-center md:items-start md:text-start w-full">

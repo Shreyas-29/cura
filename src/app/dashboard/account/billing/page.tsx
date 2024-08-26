@@ -12,7 +12,7 @@ const BillingPage = async () => {
         },
     });
 
-    const isSubscribed = dbUser?.stripeCustomerId ? true : false;
+    const isPro = dbUser?.stripeCustomerId ? true : false;
 
     return (
         <div className="flex flex-col items-start justify-start w-full max-w-3xl py-8 mx-auto">
@@ -26,12 +26,12 @@ const BillingPage = async () => {
             </div>
             <div className="flex flex-col items-start w-full py-8">
                 <h4 className="text-lg font-medium">
-                    {isSubscribed ? "Pro" : "Free"} Plan
+                    {isPro ? "Pro" : "Free"} Plan
                 </h4>
                 <p className="text-muted-foreground mt-1">
-                    {isSubscribed ? "You are subscribed to the Pro plan. Enjoy all the features!" : "You are using the Free plan."}
+                    {isPro ? "You are subscribed to the Pro plan. Enjoy all the features!" : "You are using the Free plan."}
                 </p>
-                <CheckoutButton isSubscribed={isSubscribed!} />
+                <CheckoutButton isPro={isPro!} />
             </div>
         </div>
     )

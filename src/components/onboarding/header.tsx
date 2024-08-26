@@ -1,8 +1,6 @@
-import Link from "next/link";
-import React from "react"
-import { buttonVariants } from "../ui/button";
 import { ArrowLeftIcon } from "lucide-react";
-import Icons from "../global/icons";
+import Link from "next/link";
+import { buttonVariants } from "../ui/button";
 
 const Header = () => {
     return (

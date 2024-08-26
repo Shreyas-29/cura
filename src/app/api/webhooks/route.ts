@@ -40,7 +40,6 @@ export async function POST(request: Request) {
                         },
                     });
                 }
-                console.log("Checkout Session Completed");
             }
             break;
 

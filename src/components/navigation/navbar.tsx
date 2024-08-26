@@ -1,13 +1,8 @@
-// "use client";
-
-import React from "react"
-import MaxWidthWrapper from "../global/max-width-wrapper";
+import { User } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Icons from "../global/icons";
-import { Button, buttonVariants } from "../ui/button";
-import { currentUser, User } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-// import { useClerk } from "@clerk/nextjs";
+import MaxWidthWrapper from "../global/max-width-wrapper";
+import { buttonVariants } from "../ui/button";
 import UserAccount from "../user-account";
 
 interface Props {
@@ -16,7 +11,7 @@ interface Props {
 
 const Navbar = ({ user }: Props) => {
     return (
-        <header className="sticky top-0 inset-x-0 w-full h-14 border-b border-border bg-background/50 backdrop-blur-md z-50">
+        <header className="sticky top-0 inset-x-0 w-full h-14 border-b border-border/40 bg-background/50 backdrop-blur-md z-50">
             <MaxWidthWrapper>
                 <div className="flex items-center justify-between w-full h-full">
                     <div className="flex">
