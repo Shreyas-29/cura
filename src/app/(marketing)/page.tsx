@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimationContainer, Icons, MaxWidthWrapper } from "@/components";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { FEATURES, PLANS } from "@/constants";

@@ -21,7 +21,7 @@ export const PLANS = [
         ],
         btn: {
             text: "Start for free",
-            href: "/auth/signup?plan=free"
+            href: "/dashboard/account/billing"
         },
     },
     {
@@ -49,7 +49,7 @@ export const PLANS = [
         ],
         btn: {
             text: "Upgrade to Pro",
-            href: "/auth/signup?plan=pro"
+            href: "/dashboard/account/billing"
         },
     },
 ];
