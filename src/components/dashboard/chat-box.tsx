@@ -24,6 +24,7 @@ interface Props {
 }
 
 const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
+    console.log('isPro', isPro)
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -87,10 +88,12 @@ const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
     //     }
     // };
 
-    const handleSendMessage = async (e: FormEvent) => {
+    const handleSendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!isPro && msgs.length >= 10) {
+        scrollToBottom();
+
+        if (isPro === false && messages.length >= 10) {
             setError("Message limit reached. Please upgrade to pro.");
             toast.error("Message limit reached. Please upgrade to pro.");
             return;
@@ -196,6 +199,14 @@ const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
                             )}
                         </div>
                     ))}
+                    {isLoading && (
+                        <div className="flex flex-col justify-center items-center text-center p-4">
+                            <LoaderIcon className="w-5 h-5 animate-spin" />
+                            <p className="text-sm text-muted-foreground font-medium">
+                                Assistant is thinking...
+                            </p>
+                        </div>
+                    )}
                     {!isLoading && error && (
                         <div className="flex flex-col items-center justify-center w-full py-8 h-full">
                             <p className="text-sm text-red-500 bg-red-50 px-4 py-1.5 rounded-md mx-auto font-medium flex items-center">
@@ -215,15 +226,7 @@ const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
                             )}
                         </div>
                     )}
-                    {isLoading && (
-                        <div className="flex flex-col justify-center items-center text-center p-4">
-                            <LoaderIcon className="w-5 h-5 animate-spin" />
-                            <p className="text-sm text-muted-foreground font-medium">
-                                Assistant is thinking...
-                            </p>
-                        </div>
-                    )}
-                    <div ref={messagesEndRef} />
+                    <div ref={messagesEndRef} className="w-full h-px" />
                 </div>
                 <div className="w-full rounded-xl fixed sm:sticky bottom-0 inset-x-0 px-2 bg-background">
                     <form onSubmit={handleSendMessage} className="flex flex-row items-center gap-x-4 rounded-xl py-3 md:px-3">
