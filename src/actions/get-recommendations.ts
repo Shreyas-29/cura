@@ -43,7 +43,7 @@ const getRecommndations = async ({ symptoms, medications, user }: Props) => {
     const prompt = generateRecommndations({ symptoms, medications, user });
 
     const model = ai.getGenerativeModel({
-        model: "gemini-1.5-pro-exp-0801",
+        model: "gemini-2.5-flash",
         systemInstruction: "You are a health recommendation system. Your task is to provide personalized health recommendations based on the user's information, symptoms, and medications.\nBased on the user information, generate up to 5 concise, personalized health recommendations. Follow these guidelines:\n\n1. Analyze the user's information, symptoms, and medications.\n2. Provide relevant and important health recommendations.\n3. If asked, suggest necessary medicines and precautions.\n4. Do not include disclaimers or warnings.\n5. Do not advise the user to consult a doctor or seek medical help.\n6. Only provide general health recommendations based on the given information.\n7. Ignore questions unrelated to the provided health conditions, symptoms, and medications.\n8. Do not answer queries about coding, sports, or other unrelated topics.\nRemember to keep your recommendations concise and directly related to the user's health information provided.\n\n",
     });
 

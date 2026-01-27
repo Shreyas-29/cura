@@ -66,7 +66,7 @@ const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
 
     //     try {
     //         const model = ai.getGenerativeModel({
-    //             model: "gemini-1.5-flash"
+    //             model: "gemini-2.5-flash"
     //         });
 
     //         const prompt = newMessages.map(message => `${message.role === "USER" ? "User" : "Assistant"}: ${message.content}`).join("\n");
@@ -108,34 +108,24 @@ const ChatBox = ({ isPro, user, symptoms, medications, messages }: Props) => {
         setIsLoading(true);
 
         try {
-            const model = ai.getGenerativeModel({
-                // model: "gemini-1.5-flash"
-                model: "gemini-1.5-pro-exp-0801"
-            });
-
             const promptText = generatePrompt({ symptoms, medications, user });
+
+            const model = ai.getGenerativeModel({
+                model: "gemini-2.5-flash",
+                systemInstruction: promptText,
+            });
 
             const chat = model.startChat({
                 history: [
-                    {
-                        role: "user",
-                        parts: [{ text: promptText }],
-                    },
+                    ...newMessages.map((message) => ({
+                        role: message.role,
+                        parts: [{ text: message.content }],
+                    })),
                 ],
-                ...newMessages.map((message) => ({
-                    role: message.role,
-                    parts: [{ text: message.content }],
-                })),
                 generationConfig: {
-                    maxOutputTokens: 200,
-                    temperature: 0,
+                    maxOutputTokens: 500,
+                    temperature: 0.7,
                 },
-                systemInstruction: {
-                    role: "model",
-                    parts: [{
-                        text: promptText,
-                    }],
-                }
             });
 
             const result = await chat.sendMessage(input);

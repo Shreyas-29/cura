@@ -43,7 +43,7 @@ const getHealthTips = async ({ symptoms, medications, user }: Props) => {
     const prompt = generateTips({ symptoms, medications, user });
 
     const model = ai.getGenerativeModel({
-        model: "gemini-1.5-flash",
+        model: "gemini-2.5-flash",
         systemInstruction: "Generate health tips based on the user's symptoms and medications.Please only provide general health tips and do not give any medical advice.Do not tell the user to consult a doctor or seek medical help.Just provide general health recommendations based on the information provided."
     });
 
